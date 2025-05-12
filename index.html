@@ -116,6 +116,7 @@
   <div style="text-align: center; margin-top: 20px;">
   <button onclick="fetchBotData()" style="padding: 10px 20px; background-color: #1b4332; color: white; border: none; border-radius: 5px; cursor: pointer;">
     Fetch Bot Data
+    <div id="botDataDisplay" style="margin-top: 20px; background: #f3f3f3; padding: 10px; border-radius: 8px;"></div>
   </button>
   </div>
   <h2 style="margin-bottom: 20px;">What It Can Do:</h2>
@@ -298,5 +299,21 @@
     }
   }
 </script>
+ <script>
+  async function fetchBotData() {
+    try {
+      const response = await fetch("https://farmsyncbot-backend.richardndwigah1.repl.co/api");
+      const data = await response.json();
+
+      const displayDiv = document.getElementById("botDataDisplay");
+      displayDiv.innerHTML = `
+        <h3>Bot API Response:</h3>
+        <pre>${JSON.stringify(data, null, 2)}</pre>
+      `;
+    } catch (error) {
+      alert("Failed to fetch data: " + error.message);
+    }
+  }
+ </script> 
 </body>
 </html>
