@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,6 +12,7 @@
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       padding: 30px;
+      margin: 0;
       background-color: #f0f4f8;
       color: #2d2d2d;
     }
@@ -18,7 +20,30 @@
       color: #1b4332;
     }
     .section {
-      margin: 80px 0;
+      margin: 60px 0;
+    }
+    .about-section {
+      padding: 60px 20px;
+      background-color: #ffffff;
+      text-align: center;
+    }
+    .about-section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: #222;
+    }
+    .about-section p {
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      color: #444;
+      line-height: 1.6;
+    }
+    ul {
+      padding-left: 20px;
+    }
+    li {
+      margin-bottom: 10px;
     }
   </style>
 </head>
@@ -42,10 +67,14 @@
     </ul>
   </div>
 
-  <div class="section" style="height: 800px;" data-aos="zoom-in" data-aos-delay="600">
-    <h2>Scroll Triggered Demo</h2>
-    <p>Scroll down to see more animations.</p>
-  </div>
+  <section id="about" class="about-section" data-aos="fade-up">
+    <h2>About FarmSyncBot</h2>
+    <p>
+      FarmSyncBot is designed to empower Kenyan farmers with smart tools for daily planning,
+      decision-making, and productivity. Accessible, intuitive, and mobile-friendly — it's
+      your digital farming companion built with passion and purpose.
+    </p>
+  </section>
 
   <!-- AOS Script -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
