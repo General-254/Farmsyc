@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -92,5 +93,32 @@
       once: true
     });
   </script>
+  <section id="chat-section" style="padding: 20px;">
+  <h2 style="text-align: center;">Ask FarmSyncBot</h2>
+  <div style="max-width: 500px; margin: auto;">
+    <input type="text" id="userInput" placeholder="Ask me anything about your farm..." style="width: 100%; padding: 10px; margin-bottom: 10px;">
+    <button onclick="respondToUser()" style="width: 100%; padding: 10px;">Submit</button>
+    <div id="botResponse" style="margin-top: 20px; font-style: italic;"></div>
+  </div>
+</section>
+
+<script>
+  function respondToUser() {
+    const input = document.getElementById('userInput').value.toLowerCase();
+    const responseBox = document.getElementById('botResponse');
+    
+    let response = "Sorry, I'm still learning. Try again!";
+    
+    if (input.includes("watering") || input.includes("water")) {
+      response = "Water your crops early in the morning or late in the evening to reduce evaporation.";
+    } else if (input.includes("pests") || input.includes("insects")) {
+      response = "For pests, use integrated pest management (IPM) methods like neem or traps.";
+    } else if (input.includes("market") || input.includes("sell")) {
+      response = "You can sell your produce via WhatsApp groups, local markets, or online platforms like Mkulima Young.";
+    }
+
+    responseBox.innerText = response;
+  }
+</script>
 </body>
   </html>
