@@ -7,165 +7,125 @@
 
   <!-- AOS Animation Library -->
   <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-html, body {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
 
-body > footer {
-  margin-top: auto;
-}
   <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f0f4f8;
+    /* Reset and base styles */
+    * {
       margin: 0;
       padding: 0;
-      color: #2d2d2d;
-      text-align: center;
+      box-sizing: border-box;
     }
 
-    .container {
-      max-width: 800px;
-      margin: auto;
-      padding: 40px 20px;
+    html, body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f4f8;
+      color: #2d2d2d;
+    }
+
+    main {
+      flex: 1;
+      padding: 20px;
     }
 
     .logo {
-      width: 140px;
-      margin: 0 auto 20px;
-      animation: zoomIn 1s ease;
+      width: 120px;
+      height: auto;
+      display: block;
+      margin: 0 auto 20px auto;
     }
 
-    @keyframes zoomIn {
-      0% { transform: scale(0.5); opacity: 0; }
-      100% { transform: scale(1); opacity: 1; }
-    }
-
-    h1 {
+    h1, h2 {
       color: #1b4332;
-      margin-bottom: 10px;
+      text-align: center;
     }
 
-    p.tagline {
-      font-style: italic;
-      margin-bottom: 40px;
+    .section {
+      margin: 60px 0;
     }
 
-    ul.features {
+    .features {
       list-style: none;
       padding: 0;
-      font-size: 1.1em;
-      text-align: left;
-      margin: auto;
+      margin: 20px auto;
       max-width: 500px;
     }
 
-    ul.features li {
+    .features li {
+      display: flex;
+      align-items: center;
       margin-bottom: 12px;
+      font-size: 1rem;
     }
 
-    .chatbox {
-      margin-top: 40px;
-      background: #ffffff;
+    .features li span {
+      display: inline-block;
+      width: 1.5em;
+      font-size: 1.2em;
+      color: green;
+      margin-right: 10px;
+    }
+
+    .scroll-section {
+      height: 800px;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
       padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-
-    input, button {
-      padding: 10px;
-      width: 100%;
-      margin-bottom: 10px;
-      font-size: 1em;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-    }
-
-    button {
-      background-color: #1b4332;
-      color: white;
-      cursor: pointer;
-      transition: 0.3s;
-    }
-
-    button:hover {
-      background-color: #14532d;
-    }
-
-    #botReply {
-      margin-top: 20px;
-      font-style: italic;
-      color: #333;
+      font-size: 0.95em;
+      color: #555;
+      background-color: #e0e0e0;
     }
   </style>
 </head>
-
 <body>
-  <div class="container">
-    <!-- Clean Logo -->
-<div style="text-align: center;" data-aos="fade-down">
-  <img src="logo.png" alt="FarmSyncBot Logo" style="width: 120px; height: auto; margin-bottom: 10px;" />
-</div>
 
-  <h1 data-aos="fade-down">FarmSyncBot</h1>
-
-<p data-aos="fade-up" data-aos-delay="200" style="text-align:center;">
-  A free and open-source digital assistant for farmers in Kenya. Built by Jephthah Muchangi.
-</p>
-     <!-- Core Features List -->
-    <h2 data-aos="fade-right">What It Can Do:</h2>
-    <ul class="features" data-aos="fade-left" data-aos-delay="300">
-      <li>✅ Daily farm reminders</li>
-      <li>✅ Expense tracking</li>
-      <li>✅ Market prices & alerts</li>
-      <li>✅ Weather updates</li>
-      <li>✅ Voice/text farm reports</li>
-      <li>✅ Pest/disease guidance</li>
-      <li>✅ Training resources</li>
-    </ul>
-
-    <!-- API Chat Form -->
-    <div class="chatbox" data-aos="fade-up" data-aos-delay="400">
-      <form id="chatForm">
-        <input type="text" id="username" placeholder="Enter your name" required />
-        <button type="submit">Ask the Bot</button>
-      </form>
-      <p id="botReply"></p>
+  <main>
+    <!-- Logo -->
+    <div data-aos="fade-down">
+      <img src="logo.png" alt="FarmSyncBot Logo" class="logo" />
     </div>
-  </div>
 
-  <!-- AOS JS -->
+    <h1 data-aos="fade-down">FarmSyncBot</h1>
+
+    <p data-aos="fade-up" data-aos-delay="200" style="text-align:center;">
+      A free and open-source digital assistant for farmers in Kenya. Built by Jephthah Muchangi.
+    </p>
+
+    <div class="section" data-aos="fade-right" data-aos-delay="400">
+      <h2>What It Can Do:</h2>
+      <ul class="features">
+        <li><span>✓</span> Daily farm reminders</li>
+        <li><span>✓</span> Expense tracking</li>
+        <li><span>✓</span> Market prices & alerts</li>
+        <li><span>✓</span> Weather updates</li>
+        <li><span>✓</span> Voice/text farm reports</li>
+        <li><span>✓</span> Pest/disease guidance</li>
+        <li><span>✓</span> Training resources</li>
+      </ul>
+    </div>
+
+    <div class="scroll-section" data-aos="zoom-in" data-aos-delay="600">
+      <h2>Scroll Triggered Demo</h2>
+      <p>Scroll down to see more animations.</p>
+    </div>
+  </main>
+
+  <footer data-aos="fade-up" data-aos-delay="800">
+    <p>A free and open-source digital assistant for farmers in Kenya. Built by Jephthah Muchangi.</p>
+  </footer>
+
+  <!-- AOS Script -->
   <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
-    AOS.init({ duration: 1000, once: true });
-  </script>
-
-  <!-- API Integration -->
-  <script>
-    const form = document.getElementById("chatForm");
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      const username = document.getElementById("username").value;
-
-      try {
-        const res = await fetch("https://farmsyncbot-backend.richardndwigah1.repl.co/submit", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ user: username })
-        });
-
-        const data = await res.json();
-        document.getElementById("botReply").textContent = "Bot replied: " + data.reply;
-      } catch (err) {
-        document.getElementById("botReply").textContent = "Error connecting to bot.";
-        console.error(err);
-      }
+    AOS.init({
+      duration: 1000,
+      once: true
     });
   </script>
-<footer data-aos="fade-up" data-aos-delay="800" style="text-align:center; margin-top: 100px; font-size: 0.95em; color: #555;">
-  <p>A free and open-source digital assistant for farmers in Kenya. Built by Jephthah Muchangi.</p>
-</footer>
 </body>
 </html>
