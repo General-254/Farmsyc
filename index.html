@@ -2,51 +2,98 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FarmSyncBot</title>
+
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <style>
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      padding: 20px;
       background-color: #f0f4f8;
       color: #2d2d2d;
-      text-align: center;
-      padding: 20px;
     }
+
     .logo {
-      width: 220px;
-      margin-bottom: 20px;
+      width: 120px;
+      height: auto;
+      display: block;
+      margin: 0 auto 20px auto;
     }
-    h1 {
+
+    h1, h2 {
       color: #1b4332;
+      text-align: center;
     }
+
+    .section {
+      margin: 60px 0;
+    }
+
     .features {
       list-style: none;
       padding: 0;
-      font-size: 1.1em;
+      margin: 20px auto;
+      max-width: 500px;
     }
+
     .features li {
-      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      margin-bottom: 12px;
+      font-size: 1rem;
     }
-    .features li::before {
-      content: "✅ ";
+
+    .features li span {
+      display: inline-block;
+      width: 1.5em;
+      font-size: 1.2em;
       color: green;
-      font-weight: bold;
+      margin-right: 10px;
+    }
+
+    .scroll-section {
+      height: 800px;
+      text-align: center;
     }
   </style>
 </head>
 <body>
-  <img src="logo.png" alt="FarmSyncBot Logo" class="logo">
-  <h1>FarmSyncBot</h1>
-  <p>A free and open-source digital assistant for farmers in Kenya. Built by Jephthah Muchangi.</p>
-  <h2>What It Can Do:</h2>
-<ul style="list-style: none; padding-left: 0; font-size: 1.1em;">
-  <li style="margin-bottom: 8px;">✅ Daily farm reminders</li>
-  <li style="margin-bottom: 8px;">✅ Expense tracking</li>
-  <li style="margin-bottom: 8px;">✅ Market prices & alerts</li>
-  <li style="margin-bottom: 8px;">✅ Weather updates</li>
-  <li style="margin-bottom: 8px;">✅ Voice/text farm reports</li>
-  <li style="margin-bottom: 8px;">✅ Pest/disease guidance</li>
-  <li style="margin-bottom: 8px;">✅ Training resources</li>
-</ul>
+
+  <!-- Logo (animated) -->
+  <img src="logo.png" alt="FarmSyncBot Logo" class="logo" data-aos="zoom-in" data-aos-duration="1000" />
+
+  <h1 data-aos="fade-down">FarmSyncBot</h1>
+  <p data-aos="fade-up" data-aos-delay="200" style="text-align:center;">
+    A free and open-source digital assistant for farmers in Kenya. Built by Jephthah Muchangi.
+  </p>
+
+  <div class="section" data-aos="fade-right" data-aos-delay="400">
+    <h2>What It Can Do:</h2>
+    <ul class="features">
+      <li><span>✓</span> Daily farm reminders</li>
+      <li><span>✓</span> Expense tracking</li>
+      <li><span>✓</span> Market prices & alerts</li>
+      <li><span>✓</span> Weather updates</li>
+      <li><span>✓</span> Voice/text farm reports</li>
+      <li><span>✓</span> Pest/disease guidance</li>
+      <li><span>✓</span> Training resources</li>
+    </ul>
+  </div>
+
+  <div class="scroll-section" data-aos="zoom-in" data-aos-delay="600">
+    <h2>Scroll Triggered Demo</h2>
+    <p>Scroll down to see more animations.</p>
+  </div>
+
+  <!-- AOS Script -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 1000,
+      once: true
+    });
+  </script>
 </body>
-</html>
+  </html>
