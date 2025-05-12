@@ -247,5 +247,22 @@
   // Auto-fetch on page load
   fetchStatus();
 </script>
+  <script>
+  const statusBox = document.getElementById("api-status");
+
+  fetch("https://farmsyncbot-backend.richardndwigah1.repl.co/api")
+    .then(response => {
+      if (response.ok) {
+        statusBox.textContent = "✅ API is online and responding.";
+        statusBox.style.color = "green";
+      } else {
+        throw new Error("API not OK");
+      }
+    })
+    .catch(error => {
+      statusBox.textContent = "❌ API is currently offline or unreachable.";
+      statusBox.style.color = "red";
+    });
+           </script>
 </body>
 </html>
