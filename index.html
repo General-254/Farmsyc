@@ -269,5 +269,34 @@
       statusBox.style.color = "red";
     });
            </script>
+<script>
+  async function fetchBotData() {
+    try {
+      const response = await fetch("https://farmsyncbot-backend.richardndwigah1.repl.co/api");
+      const data = await response.json();
+
+      // Create or update display container
+      let displayDiv = document.getElementById("botDataDisplay");
+      if (!displayDiv) {
+        displayDiv = document.createElement("div");
+        displayDiv.id = "botDataDisplay";
+        displayDiv.style.marginTop = "20px";
+        displayDiv.style.padding = "15px";
+        displayDiv.style.backgroundColor = "#f0f0f0";
+        displayDiv.style.border = "1px solid #ccc";
+        displayDiv.style.borderRadius = "5px";
+        document.body.appendChild(displayDiv);
+      }
+
+      // Display data
+      displayDiv.innerHTML = `
+        <h3>Bot API Response:</h3>
+        <pre>${JSON.stringify(data, null, 2)}</pre>
+      `;
+    } catch (error) {
+      alert("Failed to fetch data: " + error.message);
+    }
+  }
+</script>
 </body>
 </html>
