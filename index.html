@@ -1,151 +1,91 @@
-
-
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html><html lang="en">
+<head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="FarmSyncBot – Your Smart Farming Assistant">
-  <title>FarmSyncBot | Smart Agriculture Assistant</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <title>FarmSyncBot | Digital Assistant for Farmers</title>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Roboto', sans-serif;
-    }body {
-  background: #f4fff6;
-  color: #1b3c1c;
-  line-height: 1.6;
-}
-
-header {
-  background-color: #2f8132;
-  color: white;
-  padding: 1.2rem;
-  text-align: center;
-}
-
-header h1 {
-  font-size: 2rem;
-}
-
-nav {
-  background-color: #256029;
-  display: flex;
-  justify-content: center;
-  padding: 0.6rem;
-  flex-wrap: wrap;
-}
-
-nav a {
-  color: white;
-  text-decoration: none;
-  margin: 0.5rem 1rem;
-  font-weight: bold;
-  transition: color 0.3s;
-}
-
-nav a:hover {
-  color: #aef3a3;
-}
-
-.hero {
-  text-align: center;
-  padding: 2rem;
-  background: linear-gradient(to right, #a8e6a1, #c0f2c2);
-}
-
-.hero h2 {
-  font-size: 2rem;
-  margin-bottom: 1rem;
-}
-
-.hero p {
-  font-size: 1.1rem;
-  max-width: 700px;
-  margin: auto;
-}
-
-.features {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 1.5rem;
-  padding: 2rem;
-}
-
-.feature {
-  background: white;
-  border-left: 5px solid #2f8132;
-  padding: 1.5rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.feature h3 {
-  margin-bottom: 0.5rem;
-  color: #1b3c1c;
-}
-
-footer {
-  background-color: #2f8132;
-  color: white;
-  text-align: center;
-  padding: 1rem;
-  font-size: 0.9rem;
-}
-
-@media (max-width: 600px) {
-  header h1, .hero h2 {
-    font-size: 1.5rem;
-  }
-  .hero p {
-    font-size: 1rem;
-  }
-}
-
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; line-height: 1.6; background: #f2f2f2; color: #333; }
+    header {
+      background: #2e7d32;
+      color: #fff;
+      padding: 40px 20px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
+    header p {
+      font-size: 1.2rem;
+    }
+    .btn {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
+      background: #fff;
+      color: #2e7d32;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+    .btn:hover {
+      background: #c8e6c9;
+    }
+    section {
+      padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+    section h2 {
+      font-size: 2rem;
+      color: #2e7d32;
+      margin-bottom: 20px;
+    }
+    section p {
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+    }
+    footer {
+      background: #2e7d32;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+    }
+    @media (max-width: 600px) {
+      header h1 { font-size: 2rem; }
+      section h2 { font-size: 1.5rem; }
+    }
   </style>
-</head><body>
-  <header>
-    <h1>FarmSyncBot</h1>
-    <p>Your Smart Digital Assistant for Efficient Farming</p>
-  </header>  <nav>
-    <a href="#">Home</a>
-    <a href="#features">Features</a>
-    <a href="#contact">Contact</a>
-  </nav>  <section class="hero">
-    <h2>Revolutionize Your Farming Routine</h2>
-    <p>FarmSyncBot empowers farmers with real-time reports, automated reminders, smart coordination tools and more — all from your phone.</p>
-  </section>  <section id="features" class="features">
-    <div class="feature">
-      <h3>1. Daily Farm Reports</h3>
-      <p>Track crop health, livestock stats, and input usage automatically, with data summaries sent to your WhatsApp or Webex daily.</p>
-    </div>
-    <div class="feature">
-      <h3>2. Task Reminders</h3>
-      <p>Receive alerts for weeding, spraying, feeding, harvesting and more—never miss a critical farm task again.</p>
-    </div>
-    <div class="feature">
-      <h3>3. Group Coordination</h3>
-      <p>Plan and assign farm tasks within your team or cooperative using smart bots in WhatsApp and Webex spaces.</p>
-    </div>
-    <div class="feature">
-      <h3>4. Disease & Weather Alerts</h3>
-      <p>Stay ahead of weather risks and disease outbreaks with AI-powered notifications and advice customized for your region.</p>
-    </div>
-    <div class="feature">
-      <h3>5. Inventory & Budget Logs</h3>
-      <p>Keep digital records of what you buy, use, and sell on the farm. Simple and accessible from anywhere.</p>
-    </div>
-    <div class="feature">
-      <h3>6. Automated Reports</h3>
-      <p>Instantly generate PDF reports for inspections, certifications or internal review with one tap.</p>
-    </div>
-    <div class="feature">
-      <h3>7. Free and Open-Source</h3>
-      <p>FarmSyncBot is 100% free. Open-source and customizable, so even smallholder farmers can benefit without paying a shilling.</p>
-    </div>
-  </section>  <footer id="contact">
-    <p>Contact: General254Bots@gmail.com | Built by General Jeff & GPT</p>
-    <p>FarmSyncBot &copy; 2025. All rights reserved.</p>
-  </footer>
-</body></html>
+</head>
+<body><header>
+  <h1>FarmSyncBot</h1>
+  <p>Your Smart Digital Assistant for Modern Farming</p>
+  <a href="#about" class="btn">Learn More</a>
+</header><section id="about">
+  <h2>What FarmSyncBot Does</h2>
+  <p>FarmSyncBot is your all-in-one digital assistant tailored to the needs of small to medium-scale farmers. Built to simplify your daily tasks, it helps with:</p>
+  <ul>
+    <li>Automated farm reporting and record keeping</li>
+    <li>Task reminders for watering, weeding, and harvesting</li>
+    <li>Supply tracking (fertilizers, seeds, tools)</li>
+    <li>Weather updates and farming tips</li>
+    <li>Input-output tracking and analysis</li>
+    <li>Team coordination via Webex</li>
+    <li>Periodic reporting and calendar planning</li>
+  </ul>
+</section><section>
+  <h2>Why Free & Open-Source?</h2>
+  <p>Farming in Africa faces systemic challenges — limited access to tools, inconsistent records, and poor digital integration. By making FarmSyncBot open-source and free, we:</p>
+  <ul>
+    <li>Empower local farmers to take control of their operations</li>
+    <li>Encourage developers to build custom features and local versions</li>
+    <li>Create a transparent and collaborative improvement model</li>
+  </ul>
+  <p>Profit can come later from consulting, extensions, or enterprise support. The mission now is to reach and impact real farmers.</p>
+</section><footer>
+  Built with purpose by Jephthah Muchangi. All rights reserved.
+</footer></body>
+</html>
