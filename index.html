@@ -1,114 +1,104 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FarmSyncBot</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #f0f4f8;
-      padding: 40px 20px;
+      font-family: 'Roboto', sans-serif;
+      background: #f4f4f4;
       margin: 0;
-    }
-
-    h1, h2 {
+      padding: 0;
       text-align: center;
     }
-
-    .chat-box {
-      max-width: 500px;
-      margin: 0 auto;
+    header {
+      background: #4CAF50;
+      color: white;
+      padding: 20px 0;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    header img {
+      width: 50px;
+      vertical-align: middle;
+    }
+    header h1 {
+      display: inline-block;
+      margin: 0;
+      font-size: 24px;
+      vertical-align: middle;
+    }
+    .container {
+      margin: 40px auto;
+      max-width: 600px;
       padding: 20px;
       background: white;
-      border-radius: 8px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+      animation: fadeInUp 1s ease-out;
     }
-
-    input[type="text"] {
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    input, button {
       width: 100%;
       padding: 12px;
-      margin-bottom: 10px;
-      border-radius: 6px;
+      margin: 10px 0;
       border: 1px solid #ccc;
+      border-radius: 8px;
       font-size: 16px;
     }
-
     button {
-      width: 100%;
-      padding: 12px;
-      font-size: 16px;
-      border: none;
-      background-color: #28a745;
+      background: #4CAF50;
       color: white;
-      border-radius: 6px;
       cursor: pointer;
+      font-weight: bold;
     }
-
-    button:hover {
-      background-color: #218838;
-    }
-
     #botResponse {
       margin-top: 20px;
       font-style: italic;
-      min-height: 50px;
     }
-
     footer {
       margin-top: 40px;
-      text-align: center;
-      font-size: 12px;
-      color: #666;
+      font-size: 14px;
+      color: #555;
     }
   </style>
 </head>
 <body>
-  <h1>FarmSyncBot</h1>
-  <h2>Your farming assistant</h2>
-
-  <div class="chat-box">
+  <header>
+    <img src="logo.png" alt="FarmSyncBot Logo">
+    <h1>FarmSyncBot</h1>
+  </header>  <div class="container">
+    <h2>Ask FarmSyncBot</h2>
     <input type="text" id="userInput" placeholder="Ask me anything about your farm...">
-    <button onclick="sendQuestion()">Ask FarmSyncBot</button>
-    <div id="botResponse">Waiting for your question...</div>
-  </div>
-
-  <footer>
-    Powered by OpenAI | Built by General Jeff
-  </footer>
-
-  <script>
-    async function sendQuestion() {
-      const question = document.getElementById('userInput').value.trim();
+    <button onclick="respondToUser()">Submit</button>
+    <div id="botResponse"></div>
+  </div>  <footer>
+    Built by Jephthah Muchangi | Powered by OpenAI | 2025
+  </footer>  <script>
+    async function respondToUser() {
+      const input = document.getElementById('userInput').value;
       const responseBox = document.getElementById('botResponse');
-
-      if (!question) {
-        responseBox.innerText = "Please type a question.";
-        return;
-      }
-
       responseBox.innerText = "Thinking...";
 
       try {
         const res = await fetch("https://farmsyncbot-backend.richardndwigah1.repl.co/ask", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ question })
+          body: JSON.stringify({ question: input })
         });
 
         const data = await res.json();
-
         if (data.answer) {
           responseBox.innerText = data.answer;
-        } else if (data.error) {
-          responseBox.innerText = "Error: " + data.error;
         } else {
-          responseBox.innerText = "Unexpected response from server.";
+          responseBox.innerText = "Error: " + JSON.stringify(data);
         }
-      } catch (err) {
-        responseBox.innerText = "Failed to reach the server.";
+      } catch (error) {
+        responseBox.innerText = "Error connecting to FarmSyncBot.";
       }
     }
-  </script>
-</body>
+  </script></body>
 </html>
