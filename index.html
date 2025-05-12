@@ -120,5 +120,28 @@
     responseBox.innerText = response;
   }
 </script>
+  <form id="testForm">
+  <input type="text" id="username" placeholder="Enter your name" required>
+  <button type="submit">Send to Bot</button>
+</form>
+
+<p id="responseMsg"></p>
+
+<script>
+  const form = document.getElementById("testForm");
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const username = document.getElementById("username").value;
+
+    const res = await fetch("https://farmsyncbot-backend.richardndwigah1.repl.co/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ user: username })
+    });
+
+    const data = await res.json();
+    document.getElementById("responseMsg").textContent = "Bot replied: " + JSON.stringify(data);
+  });
+</script>
 </body>
   </html>
