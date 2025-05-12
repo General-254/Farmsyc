@@ -212,13 +212,19 @@
       document.getElementById('api-response').innerText = 'Error connecting to backend.';
     });
   </script>
-  <div id="api-status" style="text-align:center; margin-top: 20px; font-weight:bold; background: #e0ffe0; border: 2px solid green; padding: 15px; color: #1b4332;">
-  Checking FarmSyncBot API status...
-</div>
+  <h3 style="text-align:center; margin-top: 40px;">FarmSyncBot API Status</h3>
 
-<button onclick="fetchStatus()" style="display:block; margin:10px auto; padding:10px 20px; font-size:1em; background-color:#1b4332; color:white; border:none; border-radius:5px; cursor:pointer;">
-  Refresh Bot Status
-</button>
+<div style="text-align: center; margin-top: 30px;">
+  <div id="api-status" style="display: inline-block; font-weight: bold; background: #e0ffe0; border: 2px solid green; padding: 15px; color: #1b4332; border-radius: 8px;">
+    Checking FarmSyncBot API status...
+  </div>
+
+  <br><br>
+
+  <button onclick="fetchStatus()" style="padding: 10px 20px; font-size: 1em; background-color: #1b4332; color: white; border: none; border-radius: 5px; cursor: pointer;">
+    Refresh Bot Status
+  </button>
+</div>
 
 <script>
   async function fetchStatus() {
