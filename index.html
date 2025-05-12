@@ -1,147 +1,114 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>FarmSyncBot</title>
-
-  <!-- AOS Animation Library -->
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
   <style>
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      padding: 20px;
+      font-family: Arial, sans-serif;
       background-color: #f0f4f8;
-      color: #2d2d2d;
-    }
-
-    .logo {
-      width: 120px;
-      height: auto;
-      display: block;
-      margin: 0 auto 20px auto;
+      padding: 40px 20px;
+      margin: 0;
     }
 
     h1, h2 {
-      color: #1b4332;
       text-align: center;
     }
 
-    .section {
-      margin: 60px 0;
-    }
-
-    .features {
-      list-style: none;
-      padding: 0;
-      margin: 20px auto;
+    .chat-box {
       max-width: 500px;
+      margin: 0 auto;
+      padding: 20px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     }
 
-    .features li {
-      display: flex;
-      align-items: center;
-      margin-bottom: 12px;
-      font-size: 1rem;
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 16px;
     }
 
-    .features li span {
-      display: inline-block;
-      width: 1.5em;
-      font-size: 1.2em;
-      color: green;
-      margin-right: 10px;
+    button {
+      width: 100%;
+      padding: 12px;
+      font-size: 16px;
+      border: none;
+      background-color: #28a745;
+      color: white;
+      border-radius: 6px;
+      cursor: pointer;
     }
 
-    .scroll-section {
-      height: 800px;
+    button:hover {
+      background-color: #218838;
+    }
+
+    #botResponse {
+      margin-top: 20px;
+      font-style: italic;
+      min-height: 50px;
+    }
+
+    footer {
+      margin-top: 40px;
       text-align: center;
+      font-size: 12px;
+      color: #666;
     }
   </style>
 </head>
 <body>
+  <h1>FarmSyncBot</h1>
+  <h2>Your farming assistant</h2>
 
-  <!-- Logo (animated) -->
-  <img src="logo.png" alt="FarmSyncBot Logo" class="logo" data-aos="zoom-in" data-aos-duration="1000" />
-
-  <h1 data-aos="fade-down">FarmSyncBot</h1>
-  <p data-aos="fade-up" data-aos-delay="200" style="text-align:center;">
-    A free and open-source digital assistant for farmers in Kenya. Built by Jephthah Muchangi.
-  </p>
-
-  <div class="section" data-aos="fade-right" data-aos-delay="400">
-    <h2>What It Can Do:</h2>
-    <ul class="features">
-      <li><span>✓</span> Daily farm reminders</li>
-      <li><span>✓</span> Expense tracking</li>
-      <li><span>✓</span> Market prices & alerts</li>
-      <li><span>✓</span> Weather updates</li>
-      <li><span>✓</span> Voice/text farm reports</li>
-      <li><span>✓</span> Pest/disease guidance</li>
-      <li><span>✓</span> Training resources</li>
-    </ul>
+  <div class="chat-box">
+    <input type="text" id="userInput" placeholder="Ask me anything about your farm...">
+    <button onclick="sendQuestion()">Ask FarmSyncBot</button>
+    <div id="botResponse">Waiting for your question...</div>
   </div>
 
+  <footer>
+    Powered by OpenAI | Built by General Jeff
+  </footer>
 
-
-  <!-- AOS Script -->
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
   <script>
-    AOS.init({
-      duration: 1000,
-      once: true
-    });
-  </script>
-  <section id="chat-section" style="padding: 20px;">
-  <h2 style="text-align: center;">Ask FarmSyncBot</h2>
-  <div style="max-width: 500px; margin: auto;">
-    <input type="text" id="userInput" placeholder="Ask me anything about your farm..." style="width: 100%; padding: 10px; margin-bottom: 10px;">
-    <button onclick="respondToUser()" style="width: 100%; padding: 10px;">Submit</button>
-    <div id="botResponse" style="margin-top: 20px; font-style: italic;"></div>
-  </div>
-</section>
+    async function sendQuestion() {
+      const question = document.getElementById('userInput').value.trim();
+      const responseBox = document.getElementById('botResponse');
 
-<script>
-  function respondToUser() {
-    const input = document.getElementById('userInput').value.toLowerCase();
-    const responseBox = document.getElementById('botResponse');
-    
-    let response = "Sorry, I'm still learning. Try again!";
-    
-    if (input.includes("watering") || input.includes("water")) {
-      response = "Water your crops early in the morning or late in the evening to reduce evaporation.";
-    } else if (input.includes("pests") || input.includes("insects")) {
-      response = "For pests, use integrated pest management (IPM) methods like neem or traps.";
-    } else if (input.includes("market") || input.includes("sell")) {
-      response = "You can sell your produce via WhatsApp groups, local markets, or online platforms like Mkulima Young.";
+      if (!question) {
+        responseBox.innerText = "Please type a question.";
+        return;
+      }
+
+      responseBox.innerText = "Thinking...";
+
+      try {
+        const res = await fetch("https://farmsyncbot-backend.richardndwigah1.repl.co/ask", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ question })
+        });
+
+        const data = await res.json();
+
+        if (data.answer) {
+          responseBox.innerText = data.answer;
+        } else if (data.error) {
+          responseBox.innerText = "Error: " + data.error;
+        } else {
+          responseBox.innerText = "Unexpected response from server.";
+        }
+      } catch (err) {
+        responseBox.innerText = "Failed to reach the server.";
+      }
     }
-
-    responseBox.innerText = response;
-  }
-</script>
-  <form id="testForm">
-  <input type="text" id="username" placeholder="Enter your name" required>
-  <button type="submit">Send to Bot</button>
-</form>
-
-<p id="responseMsg"></p>
-
-<script>
-  const form = document.getElementById("testForm");
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-    const username = document.getElementById("username").value;
-
-    const res = await fetch("https://farmsyncbot-backend.richardndwigah1.repl.co/submit", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ user: username })
-    });
-
-    const data = await res.json();
-    document.getElementById("responseMsg").textContent = "Bot replied: " + JSON.stringify(data);
-  });
-</script>
+  </script>
 </body>
-  </html>
+</html>
