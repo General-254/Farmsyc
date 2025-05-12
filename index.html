@@ -212,5 +212,34 @@
       document.getElementById('api-response').innerText = 'Error connecting to backend.';
     });
   </script>
+  <div id="api-status" style="text-align:center; margin-top: 20px; font-weight:bold; background: #e0ffe0; border: 2px solid green; padding: 15px; color: #1b4332;">
+  Checking FarmSyncBot API status...
+</div>
+
+<button onclick="fetchStatus()" style="display:block; margin:10px auto; padding:10px 20px; font-size:1em; background-color:#1b4332; color:white; border:none; border-radius:5px; cursor:pointer;">
+  Refresh Bot Status
+</button>
+
+<script>
+  async function fetchStatus() {
+    const statusDiv = document.getElementById("api-status");
+    try {
+      const response = await fetch("https://farmsyncbot-backend.richardndwigah1.repl.co/api");
+      const data = await response.json();
+      statusDiv.innerText = `✅ ${data.message || "API Connected Successfully"}`;
+      statusDiv.style.backgroundColor = "#d4edda";
+      statusDiv.style.borderColor = "#28a745";
+      statusDiv.style.color = "#155724";
+    } catch (error) {
+      statusDiv.innerText = "❌ API connection failed. Please try again later.";
+      statusDiv.style.backgroundColor = "#f8d7da";
+      statusDiv.style.borderColor = "#dc3545";
+      statusDiv.style.color = "#721c24";
+    }
+  }
+
+  // Auto-fetch on page load
+  fetchStatus();
+</script>
 </body>
 </html>
