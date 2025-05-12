@@ -99,7 +99,7 @@
   </style>
 </head>
 <body>
-
+<div style="max-width: 900px; margin: 0 auto; padding: 20px;">
   <main>
     <!-- Logo -->
     <div data-aos="fade-down">
@@ -119,7 +119,18 @@
     <div id="botDataDisplay" style="margin-top: 20px; background: #f3f3f3; padding: 10px; border-radius: 8px;"></div>
   </button>
   </div>
-  <h2 style="margin-bottom: 20px;">What It Can Do:</h2>
+  <section style="text-align: center; margin-top: 40px;">
+  <h2 style="margin-bottom: 20px;">What It Can Do</h2>
+  <ul style="list-style: none; padding-left: 0; font-size: 1.1em; display: inline-block; text-align: left;">
+    <li style="margin-bottom: 8px;">✅ Daily farm reminders</li>
+    <li style="margin-bottom: 8px;">✅ Expense tracking</li>
+    <li style="margin-bottom: 8px;">✅ Market prices & alerts</li>
+    <li style="margin-bottom: 8px;">✅ Weather updates</li>
+    <li style="margin-bottom: 8px;">✅ Voice/text farm reports</li>
+    <li style="margin-bottom: 8px;">✅ Pest/disease guidance</li>
+    <li style="margin-bottom: 8px;">✅ Training resources</li>
+  </ul>
+  </section>
   <div style="margin-top: 30px;">
   <h2 style="font-size: 1.2em; margin-bottom: 10px;">Live Bot Status:</h2>
   <p id="bot-status" style="font-weight: bold;">Loading...</p>
@@ -355,5 +366,6 @@
 
   fetchBotData();
   </script>
+</div>
 </body>
 </html>
