@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -194,6 +193,23 @@
     AOS.init({
       duration: 1000,
       once: true
+    });
+  </script>
+  <script>
+  fetch('https://farmsyncbot-backend.richardndwigah1.repl.co/api')
+    .then(response => response.json())
+    .then(data => {
+      const container = document.getElementById('api-response');
+      if (data.message) {
+        container.innerHTML = `
+          <h2 style="color: #1b4332;">${data.message}</h2>
+        `;
+      } else {
+        container.innerText = "No message received from API.";
+      }
+    })
+    .catch(error => {
+      document.getElementById('api-response').innerText = 'Error connecting to backend.';
     });
   </script>
 </body>
