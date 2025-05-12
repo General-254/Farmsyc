@@ -1,117 +1,48 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>FarmSyncBot - Your Smart Farming Assistant</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FarmSyncBot</title>
+  
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
   <style>
     body {
-      margin: 0;
-      font-family: 'Segoe UI', sans-serif;
-      background: #f4f7f9;
-      color: #222;
-      line-height: 1.6;
+      font-family: Arial, sans-serif;
+      padding: 40px;
+      background-color: #f8f8f8;
     }
-    header {
-      background: #0a4d1c;
-      color: #fff;
-      padding: 2rem 1rem;
-      text-align: center;
+    h1 {
+      color: #2d6a4f;
     }
-    header h1 {
-      margin: 0;
-      font-size: 2.2rem;
-    }
-    header p {
-      font-size: 1.1rem;
-      margin-top: 0.5rem;
-    }
-    section {
-      padding: 1.5rem;
-      max-width: 900px;
-      margin: auto;
-    }
-    .features {
-      background: #fff;
-      border-radius: 8px;
-      padding: 1.5rem;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    }
-    .features h2 {
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-    .features ul {
-      list-style: none;
-      padding: 0;
-    }
-    .features li {
-      margin: 0.75rem 0;
-      padding-left: 1rem;
-      position: relative;
-    }
-    .features li::before {
-      content: "✔";
-      position: absolute;
-      left: 0;
-      color: green;
-    }
-    .about {
-      text-align: center;
-      margin-top: 2rem;
-    }
-    .cta {
-      text-align: center;
-      margin-top: 2rem;
-    }
-    .cta button {
-      background: #0a4d1c;
-      color: white;
-      padding: 0.75rem 1.5rem;
-      border: none;
-      font-size: 1rem;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-    footer {
-      text-align: center;
-      font-size: 0.9rem;
-      padding: 1rem;
-      color: #777;
+    .section {
+      margin-bottom: 40px;
     }
   </style>
 </head>
 <body>
-  <header>
-    <h1>FarmSyncBot</h1>
-    <p>Your smart, reliable assistant for modern farming</p>
-  </header>
+  <h1 data-aos="fade-right">FarmSyncBot</h1>
+  <p data-aos="fade-up" data-aos-delay="300">A free & open-source digital assistant for farmers in Kenya, built by Jephthah Muchangi.</p>
 
-  <section class="features">
-    <h2>What It Can Do</h2>
+  <div class="section" data-aos="zoom-in" data-aos-delay="600">
+    <h2>Core Functions</h2>
     <ul>
-      <li>Reminds farmers of daily tasks and events</li>
-      <li>Logs weather, planting, and animal health</li>
-      <li>Schedules planting and harvesting timelines</li>
-      <li>Sends smart alerts (e.g., disease risk or rainfall)</li>
-      <li>Assists in report writing and record keeping</li>
-      <li>Offers basic AI guidance for farm issues</li>
-      <li>Connects with local agriculture extensions</li>
+      <li>Daily reminders (watering, feeding, harvesting)</li>
+      <li>Expense & income tracking</li>
+      <li>Market price updates</li>
+      <li>Weather alerts</li>
+      <li>Farm reports (text, voice)</li>
+      <li>Pest & disease tips</li>
+      <li>Training & links</li>
     </ul>
-  </section>
+  </div>
 
-  <section class="about">
-    <h3>Built by Jephthah Muchangi</h3>
-    <p>Empowering farmers across Kenya and Africa with tech, discipline, and vision.</p>
-  </section>
-
-  <section class="cta">
-    <p><strong>FarmSyncBot is launching soon.</strong></p>
-    <button disabled>Coming Soon</button>
-  </section>
-
-  <footer>
-    &copy; 2025 FarmSyncBot | All rights reserved
-  </footer>
+  <script>
+    AOS.init();
+  </script>
 </body>
 </html>
