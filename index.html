@@ -319,5 +319,34 @@
     }
   }
  </script> 
+  <script>
+  async function fetchBotData() {
+    try {
+      const response = await fetch("https://farmsyncbot-backend.richardndwigah1.repl.co/api");
+      const data = await response.json();
+
+      // Update status
+      const statusElement = document.getElementById("bot-status");
+      statusElement.textContent = data.status || "Unavailable";
+      statusElement.style.color = data.status === "Online" ? "green" : "red";
+
+      // Update features
+      const featuresElement = document.getElementById("bot-features");
+      featuresElement.innerHTML = "";
+      data.features.forEach(feature => {
+        const li = document.createElement("li");
+        li.textContent = "✅ " + feature;
+        li.style.marginBottom = "8px";
+        featuresElement.appendChild(li);
+      });
+    } catch (error) {
+      console.error("Error fetching bot data:", error);
+      document.getElementById("bot-status").textContent = "Offline";
+      document.getElementById("bot-status").style.color = "red";
+    }
+  }
+
+  fetchBotData();
+  </script>
 </body>
 </html>
