@@ -1,102 +1,110 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>FarmSyncBot</title>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
   <style>
     body {
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Segoe UI', sans-serif;
       background: #f4f4f4;
       margin: 0;
       padding: 0;
       text-align: center;
     }
+
     header {
-      background: #4CAF50;
+      background-color: #2e7d32;
       color: white;
-      padding: 20px 0;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    }
-    header img {
-      width: 50px;
-      vertical-align: middle;
-    }
-    header h1 {
-      display: inline-block;
-      margin: 0;
-      font-size: 24px;
-      vertical-align: middle;
-    }
-    .container {
-      margin: 40px auto;
-      max-width: 600px;
       padding: 20px;
-      background: white;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      animation: fadeInUp 1s ease-out;
     }
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+
+    .logo-spin {
+      height: 80px;
+      animation: spin 5s linear infinite;
     }
-    input, button {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: 1px solid #ccc;
-      border-radius: 8px;
-      font-size: 16px;
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
     }
+
+    section {
+      padding: 30px;
+    }
+
+    input[type="text"] {
+      width: 90%;
+      max-width: 400px;
+      padding: 10px;
+      margin-top: 10px;
+      font-size: 1em;
+    }
+
     button {
-      background: #4CAF50;
+      padding: 10px 20px;
+      font-size: 1em;
+      background-color: #43a047;
       color: white;
+      border: none;
+      margin-top: 10px;
       cursor: pointer;
-      font-weight: bold;
     }
-    #botResponse {
+
+    button:hover {
+      background-color: #388e3c;
+    }
+
+    #botAnswer {
       margin-top: 20px;
       font-style: italic;
-    }
-    footer {
-      margin-top: 40px;
-      font-size: 14px;
-      color: #555;
+      color: #333;
+      min-height: 40px;
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="logo.png" alt="FarmSyncBot Logo">
+    <img src="assets/logo.png" alt="FarmSyncBot Logo" class="logo-spin" />
     <h1>FarmSyncBot</h1>
-  </header>  <div class="container">
-    <h2>Ask FarmSyncBot</h2>
-    <input type="text" id="userInput" placeholder="Ask me anything about your farm...">
-    <button onclick="respondToUser()">Submit</button>
-    <div id="botResponse"></div>
-  </div>  <footer>
-    Built by Jephthah Muchangi | Powered by OpenAI | 2025
-  </footer>  <script>
-    async function respondToUser() {
-      const input = document.getElementById('userInput').value;
-      const responseBox = document.getElementById('botResponse');
-      responseBox.innerText = "Thinking...";
+    <p>Your Digital Farm Assistant</p>
+  </header>
+
+  <section>
+    <h2>Ask Me Anything About Farming</h2>
+    <form id="askForm">
+      <input type="text" id="userQuestion" placeholder="e.g., How do I control aphids?" required />
+      <br>
+      <button type="submit">Ask Bot</button>
+    </form>
+    <div id="botAnswer"></div>
+  </section>
+
+  <script>
+    const form = document.getElementById("askForm");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const question = document.getElementById("userQuestion").value.trim();
+      const botAnswer = document.getElementById("botAnswer");
+
+      if (!question) return;
+
+      botAnswer.textContent = "Thinking...";
 
       try {
         const res = await fetch("https://farmsyncbot-backend.richardndwigah1.repl.co/ask", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ question: input })
+          body: JSON.stringify({ question }),
         });
 
         const data = await res.json();
-        if (data.answer) {
-          responseBox.innerText = data.answer;
-        } else {
-          responseBox.innerText = "Error: " + JSON.stringify(data);
-        }
-      } catch (error) {
-        responseBox.innerText = "Error connecting to FarmSyncBot.";
+        botAnswer.textContent = data.answer || "Sorry, I didn't get that.";
+      } catch (err) {
+        botAnswer.textContent = "Error contacting the bot. Try again later.";
       }
-    }
+    });
+  </script>
+</body>
+</html>
