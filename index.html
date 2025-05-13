@@ -1,453 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <style>
-  <style>
-  @media (max-width: 600px) {
-    .get-started-button {
-      padding: 10px 20px;
-      font-size: 1em;
-    }
-
-    #features h2 {
-      font-size: 1.5em;
-    }
-
-    #features ul {
-      padding-left: 15px;
-      text-align: left;
-    }
-
-    #features li {
-      font-size: 0.95em;
-      margin-bottom: 12px;
-    }
-
-    .arrow {
-      font-size: 1.5em;
-    }
-  }
-</style>  
-  #get-started {
-  margin-top: 0;
-  padding-top: 0;
-}
-
-#hero {
-  padding: 60px 20px;
-  text-align: center;
-  background-color: #f8f8f8;
-  position: relative;
-}
-
-.get-started-btn {
-  display: inline-block;
-  padding: 10px 25px;
-  font-size: 1.1em;
-  background-color: #4CAF50;
-  color: white;
-  border-radius: 6px;
-  text-decoration: none;
-  margin-top: 20px;
-  transition: background-color 0.3s ease;
-}
-
-.get-started-btn:hover {
-  background-color: #388E3C;
-}  
-  section {
-    padding: 40px 20px;
-  }
-
-  h2 {
-    font-family: 'Segoe UI', sans-serif;
-    font-weight: 600;
-    color: #333;
-  }
-
-  body {
-    font-family: 'Segoe UI', sans-serif;
-    line-height: 1.6;
-    color: #222;
-  }
-  </style>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-  <title>FarmSyncBot</title>
-
-  <!-- AOS Animation Library -->
-  <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet" />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FarmSyncBot - Your Farming Companion</title>
   <style>
-    /* Reset and base styles */
-    * {
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
+      background-color: #f7fafc;
+      color: #333;
     }
 
-    html, body {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f0f4f8;
-      color: #2d2d2d;
-    }
-
-    main {
-      flex: 1;
+    header {
+      background-color: #2e7d32;
+      color: white;
       padding: 20px;
-    }
-
-    .logo {
-      width: 120px;
-      height: auto;
-      display: block;
-      margin: 0 auto 20px auto;
-    }
-
-    h1, h2 {
-      color: #1b4332;
       text-align: center;
     }
 
-    .section {
-      margin: 60px 0;
+    .container {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
 
-    .features {
-      list-style: none;
-      padding: 0;
-      margin: 20px auto;
-      max-width: 500px;
+    #api-status {
+      padding: 15px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
+      font-weight: bold;
     }
 
-    .features li {
-      display: flex;
-      align-items: center;
-      margin-bottom: 12px;
+    .retry-btn {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 8px 16px;
+      background-color: #2e7d32;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
       font-size: 1rem;
     }
 
-    .features li span {
+    .retry-btn:hover {
+      background-color: #1b5e20;
+    }
+
+    ul#bot-features {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    ul#bot-features li {
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    .get-started-btn {
       display: inline-block;
-      width: 1.5em;
-      font-size: 1.2em;
-      color: green;
-      margin-right: 10px;
+      margin-top: 20px;
+      padding: 12px 24px;
+      background-color: #4caf50;
+      color: white;
+      text-decoration: none;
+      font-size: 1.2rem;
+      border-radius: 6px;
+      transition: background-color 0.3s ease;
     }
 
-    .scroll-section {
-      height: 800px;
-      text-align: center;
+    .get-started-btn:hover {
+      background-color: #388e3c;
     }
 
-    footer {
-      text-align: center;
-      padding: 20px;
-      font-size: 0.95em;
-      color: #555;
-      background-color: #e0e0e0;
+    @media (max-width: 600px) {
+      .get-started-btn {
+        width: 100%;
+        text-align: center;
+      }
     }
-    .how-it-works-list {
-  list-style: none;
-  padding: 0;
-  max-width: 600px;
-  margin: 20px auto;
-  text-align: left;
-}
-
-.how-it-works-list li {
-  background: #e9f5ec;
-  margin-bottom: 12px;
-  padding: 10px 15px;
-  border-radius: 8px;
-  font-size: 1rem;
-  line-height: 1.4;
-}
   </style>
 </head>
 <body>
-<div style="max-width: 900px; margin: 0 auto; padding: 20px;">
-  <main>
-    <!-- Logo -->
-    <div data-aos="fade-down">
-      <img src="logo.png" alt="FarmSyncBot Logo" class="logo" />
-   <p style="text-align:center; font-style: italic; color: #1b4332; margin-top: -10px;" data-aos="fade-in" data-aos-delay="150">
-  Your smart digital farming companion
-   </p>   
-    </div>
 
-    <h1 data-aos="fade-down">FarmSyncBot</h1>
+<header>
+  <h1>🌾 FarmSyncBot</h1>
+  <p>Your Smart Farming Assistant</p>
+</header>
 
-    
-<div class="section" data-aos="fade-right" data-aos-delay="400" style="text-align: center;">
-  <div style="text-align: center; margin-top: 20px;">
-  <button onclick="fetchBotData()" style="padding: 10px 20px; background-color: #1b4332; color: white; border: none; border-radius: 5px; cursor: pointer;">
-    Fetch Bot Data
-    <div id="botDataDisplay" style="margin-top: 20px; background: #f3f3f3; padding: 10px; border-radius: 8px;"></div>
-  </button>
-  </div>
-<section id="features" style="text-align: center; margin-top: 60px;">
-  <div style="padding: 40px 0;">
-    <p style="font-size: 1.2em; margin-bottom: 10px;">Scroll down to explore features</p>
-    
-    <a href="#features" style="
-      display: inline-block;
-      padding: 12px 24px;
-      background-color: #28a745;
-      color: white;
-      border-radius: 25px;
-      text-decoration: none;
-      margin-bottom: 20px;
-      font-weight: bold;
-      margin-top: 20px;
-    ">Get Started</a>
-    
-    <div class="arrow bounce" style="font-size: 2em; color: #28a745; margin-top: 10px;">
-      <i class="fas fa-arrow-down"></i>
-    </div>
-  </div>
-</section>
-<section id="features" style="text-align: center; padding: 30px 20px;">
-  <section id="features" style="padding: 40px 20px; background-color: #f9f9f9; text-align: left;">
-  <h2 style="margin-bottom: 20px; font-size: 1.6em; font-weight: bold;">What It Can Do</h2>
-<ul style="list-style: none; padding: 0; font-size: 1.05em;">
-  <li style="display: flex; align-items: center; margin-bottom: 10px;">
-    <i class="fas fa-check-circle" style="color: green; margin-right: 10px;"></i>
-    <span>Send timely farming reminders</span>
-  </li>
-  <li style="display: flex; align-items: center; margin-bottom: 10px;">
-    <i class="fas fa-check-circle" style="color: green; margin-right: 10px;"></i>
-    <span>Track daily farm activities</span>
-  </li>
-  <li style="display: flex; align-items: center; margin-bottom: 10px;">
-    <i class="fas fa-check-circle" style="color: green; margin-right: 10px;"></i>
-    <span>Store planting and harvesting records</span>
-  </li>
-  <li style="display: flex; align-items: center; margin-bottom: 10px;">
-    <i class="fas fa-check-circle" style="color: green; margin-right: 10px;"></i>
-    <span>Provide market and weather tips</span>
-  </li>
-  <li style="display: flex; align-items: center; margin-bottom: 10px;">
-    <i class="fas fa-check-circle" style="color: green; margin-right: 10px;"></i>
-    <span>Monitor livestock and crops</span>
-  </li>
-  <li style="display: flex; align-items: center; margin-bottom: 10px;">
-    <i class="fas fa-check-circle" style="color: green; margin-right: 10px;"></i>
-    <span>Send alerts for critical farm actions</span>
-  </li>
-  <li style="display: flex; align-items: center; margin-bottom: 10px;">
-    <i class="fas fa-check-circle" style="color: green; margin-right: 10px;"></i>
-    <span>Help with daily task planning</span>
-  </li>
-</ul>
-  </section>
-  <div style="margin-top: 30px;">
-   <ul id="bot-features" style="list-style: none; padding-left: 0; font-size: 1.1em;"></ul>
-  </div>
-  <div id="bot-status-section" style="margin-top: 30px;">
-  <h3 style="font-size: 1.3em;">Bot Status: <span id="bot-status" style="font-weight: bold;">Loading...</span></h3>
-  <ul id="bot-features" style="list-style: none; padding-left: 0; font-size: 1.1em;"></ul>
-  </div>
-  <!-- How It Works Section -->
-<div class="section how-it-works" data-aos="fade-up">
-  <h2 style="text-align: center;">How It Works</h2>
-  <ul class="how-it-works-list">
-    <li><strong>Step 1:</strong> Click “Get Started” to open Webex.</li>
-    <li><strong>Step 2:</strong> Login or create a Webex account.</li>
-    <li><strong>Step 3:</strong> Chat with FarmSyncBot using voice or text to manage your farm.</li>
-  </ul>
-</div>
-  <!-- Get Started Button -->
+<div class="container">
+  <div id="api-status">Checking API status...</div>
+  <button class="retry-btn" onclick="fetchStatus()">Retry</button>
 
-<!-- Scroll Down Icon -->
-<div style="text-align: center; margin-top: 20px;">
-  <span style="
-    font-size: 2rem;
-    display: inline-block;
-    animation: bounce 2s infinite;
-    color: #1b4332; ">
-  </span>
-</div>
+  <h2>Bot Status: <span id="bot-status">Loading...</span></h2>
+  <ul id="bot-features"></ul>
 
-<style>
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(8px);
-  }
-  60% {
-    transform: translateY(4px);
-  }
-}
-</style>
-</div>
-    
-
-    <div class="scroll-section" data-aos="zoom-in" data-aos-delay="600">
-    </div>
-  </main>
-
-  <footer data-aos="fade-up" data-aos-delay="800">
-    <p>Digital assistant bot for farmers in Kenya. Built by Jephthah Muchangi.</p>
-  </footer>
-
-  <!-- AOS Script -->
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init({
-      duration: 1000,
-      once: true
-    });
-  </script>
-  <script>
-  fetch('https://farmsyncbot-backend.richardndwigah1.repl.co/api')
-    .then(response => response.json())
-    .then(data => {
-      const container = document.getElementById('api-response');
-      if (data.message) {
-        container.innerHTML = `
-          <h2 style="color: #1b4332;">${data.message}</h2>
-        `;
-      } else {
-        container.innerText = "No message received from API.";
-      }
-    })
-    .catch(error => {
-      document.getElementById('api-response').innerText = 'Error connecting to backend.';
-    });
-  </script>
-  <h3 style="text-align:center; margin-top: 40px;">FarmSyncBot API Status</h3>
-
-<div style="text-align: center; margin-top: 30px;">
-  <div id="api-status" style="display: inline-block; font-weight: bold; background: #e0ffe0; border: 2px solid green; padding: 15px; color: #1b4332; border-radius: 8px;">
-    Checking FarmSyncBot API status...
-  </div>
-
-  <br><br>
-
-  <button onclick="fetchStatus()" style="padding: 10px 20px; font-size: 1em; background-color: #1b4332; color: white; border: none; border-radius: 5px; cursor: pointer;">
-    Refresh Bot Status
-  </button>
+  <a href="https://webex.com " target="_blank" class="get-started-btn">💬 Get Started with Webex</a>
 </div>
 
 <script>
   async function fetchStatus() {
     const statusDiv = document.getElementById("api-status");
     try {
-      const response = await fetch("https://farmsyncbot-backend.richardndwigah1.repl.co/api");
+      const response = await fetch("https://farmsyncbot-backend.richardndwigah1.repl.co/api ");
+
+      if (!response.ok) throw new Error("API not OK");
+
       const data = await response.json();
-      statusDiv.innerText = `✅ ${data.message || "API Connected Successfully"}`;
+
+      statusDiv.innerText = "✅ API is online and responding.";
       statusDiv.style.backgroundColor = "#d4edda";
-      statusDiv.style.borderColor = "#28a745";
+      statusDiv.style.borderColor = "#c3e6cb";
       statusDiv.style.color = "#155724";
+
+      updateBotUI(data);
     } catch (error) {
       statusDiv.innerText = "❌ API connection failed. Please try again later.";
       statusDiv.style.backgroundColor = "#f8d7da";
       statusDiv.style.borderColor = "#dc3545";
       statusDiv.style.color = "#721c24";
+
+      document.getElementById("bot-status").textContent = "Offline";
+      document.getElementById("bot-status").style.color = "red";
+      document.getElementById("bot-features").innerHTML = "";
     }
   }
 
-  // Auto-fetch on page load
-  fetchStatus();
-</script>
-  <script>
-  const statusBox = document.getElementById("api-status");
+  function updateBotUI(data) {
+    const statusElement = document.getElementById("bot-status");
+    statusElement.textContent = data.status || "Unavailable";
+    statusElement.style.color = data.status === "Online" ? "green" : "red";
 
-  fetch("https://farmsyncbot-backend.richardndwigah1.repl.co/api")
-    .then(response => {
-      if (response.ok) {
-        statusBox.textContent = "✅ API is online and responding.";
-        statusBox.style.color = "green";
-      } else {
-        throw new Error("API not OK");
-      }
-    })
-    .catch(error => {
-      statusBox.textContent = "❌ API is currently offline or unreachable.";
-      statusBox.style.color = "red";
-    });
-           </script>
-<script>
-  async function fetchBotData() {
-    try {
-      const response = await fetch("https://farmsyncbot-backend.richardndwigah1.repl.co/api");
-      const data = await response.json();
+    const featuresElement = document.getElementById("bot-features");
+    featuresElement.innerHTML = "";
 
-      // Create or update display container
-      let displayDiv = document.getElementById("botDataDisplay");
-      if (!displayDiv) {
-        displayDiv = document.createElement("div");
-        displayDiv.id = "botDataDisplay";
-        displayDiv.style.marginTop = "20px";
-        displayDiv.style.padding = "15px";
-        displayDiv.style.backgroundColor = "#f0f0f0";
-        displayDiv.style.border = "1px solid #ccc";
-        displayDiv.style.borderRadius = "5px";
-        document.body.appendChild(displayDiv);
-      }
-
-      // Display data
-      displayDiv.innerHTML = `
-        <h3>Bot API Response:</h3>
-        <pre>${JSON.stringify(data, null, 2)}</pre>
-      `;
-    } catch (error) {
-      alert("Failed to fetch data: " + error.message);
-    }
-  }
-</script>
- <script>
-  async function fetchBotData() {
-    try {
-      const response = await fetch("https://farmsyncbot-backend.richardndwigah1.repl.co/api");
-      const data = await response.json();
-
-      const displayDiv = document.getElementById("botDataDisplay");
-      displayDiv.innerHTML = `
-        <h3>Bot API Response:</h3>
-        <pre>${JSON.stringify(data, null, 2)}</pre>
-      `;
-    } catch (error) {
-      alert("Failed to fetch data: " + error.message);
-    }
-  }
- </script> 
-  <script>
-  async function fetchBotData() {
-    try {
-      const response = await fetch("https://farmsyncbot-backend.richardndwigah1.repl.co/api");
-      const data = await response.json();
-
-      // Update status
-      const statusElement = document.getElementById("bot-status");
-      statusElement.textContent = data.status || "Unavailable";
-      statusElement.style.color = data.status === "Online" ? "green" : "red";
-
-      // Update features
-      const featuresElement = document.getElementById("bot-features");
-      featuresElement.innerHTML = "";
+    if (data.features && Array.isArray(data.features)) {
       data.features.forEach(feature => {
         const li = document.createElement("li");
         li.textContent = "✅ " + feature;
-        li.style.marginBottom = "8px";
         featuresElement.appendChild(li);
       });
-    } catch (error) {
-      console.error("Error fetching bot data:", error);
-      document.getElementById("bot-status").textContent = "Offline";
-      document.getElementById("bot-status").style.color = "red";
+    } else {
+      const li = document.createElement("li");
+      li.textContent = "⚠️ No features available";
+      featuresElement.appendChild(li);
     }
   }
 
-  fetchBotData();
-  </script>
-</div>
+  // Run on page load
+  window.onload = fetchStatus;
+</script>
+
 </body>
 </html>
