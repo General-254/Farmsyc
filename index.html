@@ -352,6 +352,24 @@ function toggleTheme() {
 
   // Run on page load
   window.onload = fetchStatus;
+  // Dark Mode Toggle Function
+function toggleTheme() {
+  const body = document.body;
+  const themeToggle = document.getElementById("theme-toggle");
+
+  body.classList.toggle("dark-mode");
+
+  if (body.classList.contains("dark-mode")) {
+    themeToggle.textContent = "☀️";
+    themeToggle.title = "Switch to Light Mode";
+  } else {
+    themeToggle.textContent = "🌙";
+    themeToggle.title = "Switch to Dark Mode";
+  }
+
+  // Optional: Save preference in localStorage
+  localStorage.setItem("theme", body.classList.contains("dark-mode") ? "dark" : "light");
+  }
 </script>
 
 </body>
