@@ -5,6 +5,49 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>FarmSyncBot - Your Farming Companion</title>
   <style>
+    /* ===== LIGHT MODE DEFAULT STYLES ===== */
+body {
+  background-color: #f7fafc;
+  color: #333;
+}
+
+.container, .signup-section {
+  background-color: white;
+  color: #333;
+}
+
+header {
+  background-color: #2e7d32;
+}
+
+.get-started-btn {
+  background-color: #4caf50;
+}
+
+.retry-btn {
+  background-color: #2e7d32;
+}
+
+/* ===== DARK MODE STYLES ===== */
+body.dark-mode {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+}
+
+.container, .signup-section {
+  background-color: #2d2d2d;
+  color: #f0f0f0;
+}
+
+header.dark-mode-header {
+  background-color: #1b5e20;
+}
+
+.get-started-btn.dark-mode-button,
+.retry-btn.dark-mode-button {
+  background-color: #66bb6a;
+  color: #000;
+}
     /* Reset some defaults */
     * {
       margin: 0;
@@ -155,6 +198,7 @@
   <img src="logo.png" alt="FarmSyncBot Logo" class="logo">
   <h1>🌾 FarmSyncBot</h1>
   <p class="tagline">Your Smart Farming Assistant</p>
+  <button id="theme-toggle" onclick="toggleTheme()">🌙 Switch to Dark Mode</button>
 </header>
 
 <div class="container">
@@ -273,6 +317,25 @@
 
   // Run on page load
   window.onload = fetchStatus;
+  // Dark Mode Toggle
+function toggleTheme() {
+  const body = document.body;
+  const header = document.querySelector("header");
+  const getStartedBtn = document.querySelector(".get-started-btn");
+  const retryBtn = document.querySelector(".retry-btn");
+  const themeToggle = document.getElementById("theme-toggle");
+
+  body.classList.toggle("dark-mode");
+  header.classList.toggle("dark-mode-header");
+  getStartedBtn.classList.toggle("dark-mode-button");
+  retryBtn.classList.toggle("dark-mode-button");
+
+  if (body.classList.contains("dark-mode")) {
+    themeToggle.textContent = "☀️ Switch to Light Mode";
+  } else {
+    themeToggle.textContent = "🌙 Switch to Dark Mode";
+  }
+  }
 </script>
 
 </body>
