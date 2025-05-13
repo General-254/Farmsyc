@@ -146,14 +146,101 @@
         text-align: center;
       }
     }
+    /* ===== Theme Toggle Button ===== */
+.theme-toggle-btn {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 9999;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 12px;
+  font-size: 1.1rem;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: background-color 0.3s ease;
+}
+
+.theme-toggle-btn:hover {
+  background-color: #388e3c;
+}
+
+/* ===== LIGHT MODE DEFAULT STYLES ===== */
+body {
+  background-color: #f7fafc;
+  color: #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.container, .signup-section {
+  background-color: white;
+  color: #333;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+header {
+  background-color: #2e7d32;
+  transition: background-color 0.3s ease;
+}
+
+.get-started-btn,
+.retry-btn {
+  transition: background-color 0.3s ease;
+}
+
+/* ===== DARK MODE STYLES ===== */
+body.dark-mode {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+}
+
+body.dark-mode .container,
+body.dark-mode .signup-section {
+  background-color: #2d2d2d;
+  color: #f0f0f0;
+}
+
+body.dark-mode header {
+  background-color: #1b5e20;
+}
+
+body.dark-mode .get-started-btn,
+body.dark-mode .retry-btn {
+  background-color: #66bb6a;
+  color: #000;
+    }
+    // Dark Mode Toggle
+function toggleTheme() {
+  const body = document.body;
+  const themeToggle = document.getElementById("theme-toggle");
+
+  body.classList.toggle("dark-mode");
+
+  if (body.classList.contains("dark-mode")) {
+    themeToggle.textContent = "☀️";
+    themeToggle.title = "Switch to Light Mode";
+  } else {
+    themeToggle.textContent = "🌙";
+    themeToggle.title = "Switch to Dark Mode";
+  }
+
+  // Save preference to localStorage (optional, for later)
+    }
   </style>
 </head>
 <body>
 
 <header>
+  <!-- Top-left Dark Mode Toggle -->
+<button id="theme-toggle" onclick="toggleTheme()" class="theme-toggle-btn">🌙</button>
+
+<header>
   <img src="logo.png" alt="FarmSyncBot Logo" class="logo">
   <h1>🌾 FarmSyncBot</h1>
   <p class="tagline">Your Smart Farming Assistant</p>
+</header>
 </header>
 
 <div class="container">
