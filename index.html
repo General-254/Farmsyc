@@ -5,19 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>FarmSyncBot - Your Farming Companion</title>
   <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Reset some defaults */
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background-color: #f7fafc;
       color: #333;
+      line-height: 1.6;
     }
 
     header {
       background-color: #2e7d32;
       color: white;
-      padding: 20px;
+      padding: 30px 20px;
       text-align: center;
+    }
+
+    .logo {
+      width: 80px;
+      height: auto;
+      margin-bottom: 15px;
+      border-radius: 10px;
+    }
+
+    .tagline {
+      font-size: 1.2rem;
+      opacity: 0.9;
     }
 
     .container {
@@ -53,16 +71,6 @@
       background-color: #1b5e20;
     }
 
-    ul#bot-features {
-      list-style: none;
-      padding-left: 0;
-    }
-
-    ul#bot-features li {
-      margin-bottom: 10px;
-      font-size: 1.1rem;
-    }
-
     .get-started-btn {
       display: inline-block;
       margin-top: 20px;
@@ -79,6 +87,60 @@
       background-color: #388e3c;
     }
 
+    .bot-info {
+      display: none;
+      animation: fadeIn 1s ease-in-out;
+      margin-top: 30px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .feature-list {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    .feature-list li {
+      margin-bottom: 12px;
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .feature-list li::before {
+      content: "✅";
+      margin-right: 10px;
+      color: #4caf50;
+      font-size: 1.2rem;
+    }
+
+    .signup-section {
+      margin-top: 30px;
+      padding: 20px;
+      background-color: #f1f8e9;
+      border-left: 4px solid #66bb6a;
+      border-radius: 5px;
+    }
+
+    .signup-section ol {
+      padding-left: 20px;
+    }
+
+    .signup-section li {
+      margin-bottom: 10px;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 40px;
+    }
+
     @media (max-width: 600px) {
       .get-started-btn {
         width: 100%;
@@ -90,19 +152,42 @@
 <body>
 
 <header>
+  <img src="logo.png" alt="FarmSyncBot Logo" class="logo">
   <h1>🌾 FarmSyncBot</h1>
-  <p>Your Smart Farming Assistant</p>
+  <p class="tagline">Your Smart Farming Assistant</p>
 </header>
 
 <div class="container">
   <div id="api-status">Checking API status...</div>
   <button class="retry-btn" onclick="fetchStatus()">Retry</button>
 
-  <h2>Bot Status: <span id="bot-status">Loading...</span></h2>
-  <ul id="bot-features"></ul>
+  <br><br>
 
-  <a href="https://webex.com " target="_blank" class="get-started-btn">💬 Get Started with Webex</a>
+  <!-- Get Started Button -->
+  <button class="get-started-btn" onclick="showBotInfo()">💬 Get Started</button>
+
+  <!-- Bot Info Section (Hidden Initially) -->
+  <div id="bot-info" class="bot-info">
+    <h2>✔️ What I Can Do</h2>
+    <ul id="bot-features" class="feature-list"></ul>
+
+    <!-- How to Sign Up Section -->
+    <div class="signup-section">
+      <h3>📝 How to Use FarmSyncBot</h3>
+      <ol>
+        <li>Click on “Get Started”</li>
+        <li>Open Webex</li>
+        <li>Login or create a Webex account</li>
+        <li>Search for <strong>FarmSyncBot</strong></li>
+        <li>Send any message to start interacting</li>
+      </ol>
+    </div>
+  </div>
 </div>
+
+<footer>
+  <p>Farming Assistant Bot | Built by Jephthah Muchangi</p>
+</footer>
 
 <script>
   async function fetchStatus() {
@@ -124,38 +209,4 @@
       statusDiv.innerText = "❌ API connection failed. Please try again later.";
       statusDiv.style.backgroundColor = "#f8d7da";
       statusDiv.style.borderColor = "#dc3545";
-      statusDiv.style.color = "#721c24";
-
-      document.getElementById("bot-status").textContent = "Offline";
-      document.getElementById("bot-status").style.color = "red";
-      document.getElementById("bot-features").innerHTML = "";
-    }
-  }
-
-  function updateBotUI(data) {
-    const statusElement = document.getElementById("bot-status");
-    statusElement.textContent = data.status || "Unavailable";
-    statusElement.style.color = data.status === "Online" ? "green" : "red";
-
-    const featuresElement = document.getElementById("bot-features");
-    featuresElement.innerHTML = "";
-
-    if (data.features && Array.isArray(data.features)) {
-      data.features.forEach(feature => {
-        const li = document.createElement("li");
-        li.textContent = "✅ " + feature;
-        featuresElement.appendChild(li);
-      });
-    } else {
-      const li = document.createElement("li");
-      li.textContent = "⚠️ No features available";
-      featuresElement.appendChild(li);
-    }
-  }
-
-  // Run on page load
-  window.onload = fetchStatus;
-</script>
-
-</body>
-</html>
+      statusDiv.style.color = "#721c24
