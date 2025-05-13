@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>FarmSyncBot - Your Farming Companion</title>
   <style>
+    
     /* Dark Mode Overrides for Better Readability */
 
 body.dark-mode .container,
@@ -243,6 +244,19 @@ function toggleTheme() {
   }
 
   // Save preference to localStorage (optional, for later)
+    }
+    /* Force visibility of "What I Can Do" section in dark mode */
+body.dark-mode .bot-info {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  background-color: #2d2d2d !important;
+  color: #f0f0f0 !important;
+  border: 1px solid #444 !important;
+}
+
+body.dark-mode .feature-list li {
+  color: #ffffff !important;
     }
   </style>
 </head>
