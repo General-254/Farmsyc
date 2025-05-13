@@ -1,11 +1,10 @@
-// service-worker.js
-
 const CACHE_NAME = 'farmsyncbot-cache-v2';
 const urlsToCache = [
   '/',
   '/index.html',
   '/offline.html',
-  '/logo.png'
+  '/logo.png',
+  '/manifest.json'
 ];
 
 self.addEventListener('install', event => {
