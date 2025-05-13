@@ -209,4 +209,71 @@
       statusDiv.innerText = "❌ API connection failed. Please try again later.";
       statusDiv.style.backgroundColor = "#f8d7da";
       statusDiv.style.borderColor = "#dc3545";
-      statusDiv.style.color = "#721c24
+      statusDiv.style.color = "#721c24";
+
+      // Still show fallback features if API fails
+      const featuresElement = document.getElementById("bot-features");
+      featuresElement.innerHTML = "";
+
+      const fallbackFeatures = [
+        "Send Timely Farming Reminders",
+        "Track Daily Farm Activities",
+        "Store Planting and Harvest Records",
+        "Provide Market and Weather Tips",
+        "Monitor Livestock and Crops",
+        "Send Alerts for Critical Actions",
+        "Help with Daily Task Planning"
+      ];
+
+      fallbackFeatures.forEach(feature => {
+        const li = document.createElement("li");
+        li.textContent = feature;
+        featuresElement.appendChild(li);
+      });
+
+      document.getElementById("bot-status").textContent = "Offline";
+      document.getElementById("bot-status").style.color = "red";
+    }
+  }
+
+  function updateBotUI(data) {
+    const statusElement = document.getElementById("bot-status");
+    statusElement.textContent = data.status || "Unavailable";
+    statusElement.style.color = data.status === "Online" ? "green" : "red";
+
+    const featuresElement = document.getElementById("bot-features");
+    featuresElement.innerHTML = "";
+
+    const features = data.features && Array.isArray(data.features)
+      ? data.features
+      : [
+          "Send Timely Farming Reminders",
+          "Track Daily Farm Activities",
+          "Store Planting and Harvest Records",
+          "Provide Market and Weather Tips",
+          "Monitor Livestock and Crops",
+          "Send Alerts for Critical Actions",
+          "Help with Daily Task Planning"
+        ];
+
+    features.forEach(feature => {
+      const li = document.createElement("li");
+      li.textContent = feature;
+      featuresElement.appendChild(li);
+    });
+  }
+
+  function showBotInfo() {
+    const botInfo = document.getElementById("bot-info");
+    if (botInfo.style.display === "none" || botInfo.style.display === "") {
+      botInfo.style.display = "block";
+      window.location.hash = "#bot-info"; // Scroll to section
+    }
+  }
+
+  // Run on page load
+  window.onload = fetchStatus;
+</script>
+
+</body>
+</html>
